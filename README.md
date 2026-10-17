@@ -4,8 +4,7 @@
 
 **A beginner-friendly guide to understanding what each web technology is, what problem it solves, and how it relates to the others.**
 
-[![English](https://img.shields.io/badge/lang-English-2563eb?style=for-the-badge)](README.md)
-[![Español](https://img.shields.io/badge/lang-Espa%C3%B1ol-dc2626?style=for-the-badge)](README.es.md)
+🌐 **Languages:** 🇺🇸 English | 🇪🇸 [Español](README.es.md)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
