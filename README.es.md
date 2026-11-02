@@ -2,9 +2,9 @@
 
 # Tecnologías de Desarrollo Web: ¿Qué es qué?
 
-**Una guía para principiantes para entender qué es cada tecnología web, qué problema resuelve y cómo se relaciona con las demás.**
+**Una guía para quienes apenas empiezan y sienten que todos los nombres suenan igual.**
 
-🌐 **Idiomas:** 🇺🇸 [English](README.md) | 🇪🇸 Español
+**Idiomas:** [English](README.md) | Español
 
 ![License: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-bienvenidos-brightgreen.svg)
@@ -31,296 +31,180 @@
 
 ---
 
-¿React, Next.js, Node.js, NestJS, Nuxt, Vue, Angular, Svelte, Astro o Django? Si todos esos nombres te parecen lo mismo, no eres el único.
+React, Next.js, Node.js, NestJS, Vue, Nuxt, Angular, Django... Si sientes que todos son lo mismo, **es completamente normal.** A todos nos pasó.
 
-El ecosistema del desarrollo web puede ser confuso cuando estás empezando. Hay bibliotecas, frameworks, runtimes y herramientas que tienen nombres parecidos, se complementan entre sí o resuelven problemas similares desde enfoques diferentes.
+Esta guía no te va a enseñar a programar. Te va a ayudar a **ubicar cada nombre en el mapa**, para que la próxima vez que lo escuches sepas de qué se trata.
 
-> [!IMPORTANT]
-> **El objetivo de esta guía es ayudarte a entender qué es cada cosa, para qué sirve y cuándo tiene sentido utilizarla.**
->
-> No necesitas aprenderlas todas. Primero necesitas entender qué papel cumple cada una.
+> [!TIP]
+> No necesitas aprender todo esto. Ni siquiera la mitad. Solo necesitas saber qué es cada cosa para no sentirte perdido.
 
 ## Índice
 
-- [1. Antes de empezar: el mapa del ecosistema web](#1-antes-de-empezar-el-mapa-del-ecosistema-web)
-- [2. Las tecnologías, por categoría](#2-las-tecnologías-por-categoría)
-- [3. Las diferencias que más confunden](#3-las-diferencias-que-más-confunden)
-- [4. ¿Cómo se combinan en un proyecto real?](#4-cómo-se-combinan-en-un-proyecto-real)
-- [5. ¿Qué tecnología debería aprender?](#5-qué-tecnología-debería-aprender)
-- [6. Conceptos clave](#6-conceptos-clave)
-- [7. Contribuciones](#7-contribuciones)
-- [8. Licencia](#8-licencia)
+1. [Lo básico: ¿de qué está hecha una página web?](#1-lo-básico-de-qué-está-hecha-una-página-web)
+2. [Las palabras que vas a escuchar mucho](#2-las-palabras-que-vas-a-escuchar-mucho)
+3. [¿Qué es cada tecnología?](#3-qué-es-cada-tecnología)
+4. [Las confusiones más comunes](#4-las-confusiones-más-comunes)
+5. [Un ejemplo real](#5-un-ejemplo-real)
+6. [¿Por dónde empiezo?](#6-por-dónde-empiezo)
+7. [Para llevar](#7-para-llevar)
 
 ---
 
-## 1. Antes de empezar: el mapa del ecosistema web
+## 1. Lo básico: ¿de qué está hecha una página web?
 
-Una aplicación web puede involucrar diferentes piezas. Cada una cumple una función distinta.
+Imagina un **restaurante**
+
+| En el restaurante | En una app web | ¿Qué es? |
+|---|---|---|
+| El comedor, el menú, las mesas | **Frontend** | Lo que ves y tocas: botones, textos, imágenes. |
+| La cocina | **Backend** | Donde se procesa todo y tú no lo ves: revisar tu contraseña, calcular un total, etc. |
+| El mesero | **API** | El que lleva pedidos del comedor a la cocina y regresa con la respuesta. |
+| La bodega | **Base de datos** | Donde se guarda la información: usuarios, productos, pedidos. |
 
 ```text
-                    APLICACIÓN WEB
-                          |
-             +------------+------------+
-             |                         |
-          FRONTEND                  BACKEND
-      Lo que utiliza el       Lógica y procesamiento
-           usuario                    |
-             |                  +------+------+
-       +-----+------+           |             |
-       |            |         API REST     Acceso a
-    React        Vue /        o similar    la base de datos
-    Angular      Svelte
-       |
-    Next.js
-    (framework de React)
-
-    El frontend también puede comunicarse
-    con un backend independiente.
+   Tú  →  FRONTEND  →  API  →  BACKEND  →  BASE DE DATOS
+         (comedor)  (mesero)  (cocina)      (bodega)
 ```
+
+Casi todas las tecnologías de esta guía viven en **una** de estas partes. Ese es el truco para entenderlas.
+
+---
+
+## 2. Las palabras que vas a escuchar mucho
+
+| Palabra | En simple | Ejemplo |
+|---|---|---|
+| **Lenguaje** | El idioma en el que le hablas a la computadora. | JavaScript, Python |
+| **Biblioteca** (*library*) | Una caja de herramientas: tú decides cuándo y cómo usarlas. | React |
+| **Framework** | Una casa ya con cimientos y paredes: tú la decoras, pero siguiendo sus reglas. | Angular, Django |
+| **Runtime** | El lugar donde tu código puede "correr" (ejecutarse). | Node.js |
+| **Herramienta** | Ayudantes que hacen tu trabajo más fácil, pero no son tu app. | Vite, npm, Docker |
 
 > [!NOTE]
-> Este esquema es conceptual, no una arquitectura obligatoria. Por ejemplo, Next.js también puede ejecutar lógica del lado del servidor y acceder a datos.
+> Estas categorías no son perfectas y a veces se mezclan. No te preocupes por eso ahorita.
 
-Para entender mejor las tecnologías, primero debemos distinguir algunas categorías:
+---
 
-| Categoría | ¿Qué es? | Ejemplos |
-|---|---|---|
-| Lenguaje de programación | Permite escribir instrucciones para una computadora. | JavaScript, TypeScript, Python |
-| Biblioteca (*library*) | Ofrece funcionalidades que tu código utiliza. | React |
-| Framework | Proporciona una estructura y convenciones para desarrollar aplicaciones. | Angular, Django, NestJS |
-| Runtime | Proporciona el entorno en el que se ejecuta el código. | Node.js |
-| Framework de aplicación (*meta-framework*) | Amplía otra tecnología y ofrece herramientas para construir aplicaciones más completas. | Next.js, Nuxt |
-| Herramienta de desarrollo | Facilita tareas como compilar, probar o empaquetar código. | Vite |
+## 3. ¿Qué es cada tecnología?
 
-Estas categorías no siempre son excluyentes. Por ejemplo, algunos frameworks también se describen como plataformas de desarrollo, y los términos *framework* y *meta-framework* no tienen una frontera universalmente aceptada.
+### Frontend (lo que ve el usuario)
 
-## 2. Las tecnologías, por categoría
-
-### 2.1. Bibliotecas y frameworks de interfaz
-
-Estas tecnologías ayudan a construir la interfaz con la que interactúa el usuario.
-
-| Tecnología | ¿Qué es? | ¿Para qué sirve? |
-|---|---|---|
-| **React** | Biblioteca de JavaScript para interfaces de usuario. | Construir interfaces mediante componentes reutilizables. |
-| **Vue** | Framework progresivo de JavaScript. | Construir interfaces y aplicaciones web con una curva de adopción gradual. |
-| **Angular** | Framework de desarrollo web basado en TypeScript. | Construir aplicaciones estructuradas con herramientas y convenciones integradas. |
-| **Svelte** | Framework de interfaz que utiliza un compilador para transformar componentes. | Crear interfaces reactivas con una sintaxis propia. |
-
-Aunque cumplen funciones similares, no son idénticos ni tienen exactamente las mismas filosofías de desarrollo.
-
-**Ejemplo:** si quieres construir una tabla de usuarios que se actualice cuando cambien sus datos, puedes utilizar React, Vue, Angular o Svelte.
-
-No necesitas utilizar los cuatro. Normalmente eliges uno para construir la interfaz principal.
-
-### 2.2. Frameworks para aplicaciones web completas
-
-Estas tecnologías amplían las capacidades de otras herramientas y ofrecen soluciones para construir aplicaciones más completas.
-
-| Tecnología | Se basa en | ¿Qué aporta? |
-|---|---|---|
-| **Next.js** | React | Enrutamiento, renderizado en servidor, generación de páginas y funciones de servidor, entre otras capacidades. |
-| **Nuxt** | Vue | Estructura de aplicación, enrutamiento, renderizado en servidor y otras funciones integradas. |
-| **Astro** | Arquitectura orientada al contenido | Generación de páginas rápidas y envío de JavaScript al navegador solo cuando se necesita, entre otras opciones. |
-
-Estos frameworks pueden reducir la cantidad de decisiones que debes tomar al comenzar una aplicación.
-
-Sus enfoques también son diferentes: Astro destaca especialmente en sitios orientados al contenido, mientras que Next.js y Nuxt ofrecen herramientas para una variedad más amplia de aplicaciones interactivas.
-
-### 2.3. Backend y ejecución de JavaScript
-
-Aquí aparecen algunos de los nombres que más confunden a quienes están empezando.
-
-| Tecnología | ¿Qué es? | ¿Para qué sirve? |
-|---|---|---|
-| **Node.js** | Runtime de JavaScript. | Ejecutar JavaScript fuera del navegador, por ejemplo, en un servidor. |
-| **NestJS** | Framework de backend que normalmente utiliza Node.js. | Construir servidores y APIs con una arquitectura estructurada. |
-| **Express** | Framework web minimalista para Node.js. | Crear servidores, rutas y APIs con flexibilidad. |
-| **Django** | Framework web de Python. | Construir aplicaciones y backends con herramientas integradas, como ORM, sistema de autenticación y panel de administración. |
-
-> [!IMPORTANT]
-> Node.js **no** es un framework. Es el entorno de ejecución sobre el que pueden funcionar frameworks como NestJS y Express.
-
-Y aunque NestJS y Next.js tienen nombres parecidos, cumplen funciones diferentes:
-
-- Next.js se centra en aplicaciones construidas con React.
-- NestJS se centra en el backend y la organización de aplicaciones del servidor.
-
-### 2.4. Herramientas que también encontrarás
-
-No todo lo que aparece en un proyecto es un framework.
-
-| Tecnología | Función |
+| Tecnología | En una frase |
 |---|---|
-| **TypeScript** | Añade un sistema de tipos estáticos a JavaScript y se transforma para ejecutarse en los entornos correspondientes. |
-| **Vite** | Proporciona herramientas de desarrollo y compilación para proyectos web. |
-| **npm** | Gestiona paquetes y dependencias del ecosistema JavaScript. |
-| **PostgreSQL** | Sistema de gestión de bases de datos relacionales. |
-| **Docker** | Permite empaquetar aplicaciones y sus dependencias en contenedores. |
+| **React** | La más popular para crear interfaces con piezas reutilizables (llamadas *componentes*). |
+| **Vue** | Parecida a React, conocida por ser amigable para principiantes. |
+| **Angular** | Más completa y con más reglas. Común en empresas grandes. |
+| **Svelte** | Otra alternativa, con una forma de escribir código más corta. |
 
-Estas herramientas pueden utilizarse junto con diferentes frameworks. Por ejemplo, puedes utilizar TypeScript con React, Angular, NestJS o Next.js.
+Las cuatro sirven para **lo mismo**. Normalmente eliges **una**.
 
----
+### "Versiones con superpoderes"
 
-## 3. Las diferencias que más confunden
+| Tecnología | En una frase |
+|---|---|
+| **Next.js** | React + extras (páginas, rutas, algo de backend). |
+| **Nuxt** | Lo mismo, pero para Vue. |
+| **Astro** | Ideal para blogs, documentación y páginas que deben cargar muy rápido. |
 
-### React vs. Next.js
+### Backend (la cocina)
 
-**React es una biblioteca; Next.js es un framework construido sobre React.**
+| Tecnología | En una frase |
+|---|---|
+| **Node.js** | Permite usar JavaScript fuera del navegador, por ejemplo en un servidor. **No es un framework.** |
+| **Express** | Una forma sencilla y flexible de crear un backend con Node.js. |
+| **NestJS** | Una forma más ordenada y estructurada de crear un backend con Node.js. |
+| **Django** | Un framework de backend, pero en **Python**. Trae muchas cosas listas. |
 
-React proporciona las herramientas principales para construir interfaces mediante componentes. Por sí solo, no impone una solución completa para todas las necesidades de una aplicación.
+### Otras cosas que verás en todos lados
 
-Next.js incorpora React y ofrece herramientas adicionales para organizar aplicaciones, manejar rutas y utilizar diferentes estrategias de renderizado, entre otras funciones.
-
-Una forma sencilla de recordarlo:
-
-- React: construir interfaces.
-- Next.js: construir aplicaciones web basadas en React con una estructura y capacidades adicionales.
-
-No tienes que elegir necesariamente entre ambos: cuando utilizas Next.js, también estás utilizando React.
-
-### Vue vs. Nuxt
-
-La relación es similar a la de React y Next.js.
-
-- Vue es un framework para construir interfaces.
-- Nuxt amplía Vue con herramientas para construir aplicaciones web completas.
-
-Nuxt no es una versión independiente de Vue que lo sustituya. Es una forma de trabajar con Vue que proporciona más estructura y funcionalidades.
-
-### Node.js vs. NestJS
-
-Esta diferencia es todavía más importante porque pertenecen a categorías distintas.
-
-- Node.js permite ejecutar JavaScript en el servidor.
-- NestJS utiliza un entorno como Node.js y proporciona una estructura para desarrollar aplicaciones backend.
-
-Una analogía: Node.js es el entorno de ejecución; NestJS es una de las herramientas que puedes utilizar para construir tu aplicación dentro de ese entorno.
-
-También puedes utilizar Node.js directamente o con otros frameworks, como Express.
-
-### Next.js vs. NestJS
-
-Aunque sus nombres se parecen, no son alternativas equivalentes.
-
-| | Next.js | NestJS |
-|---|---|---|
-| Enfoque principal | Aplicaciones web con React. | Aplicaciones backend. |
-| Interfaz web | Sí, mediante React. | No proporciona por sí mismo una interfaz web de usuario como React. |
-| APIs | Puede implementar endpoints y funciones de servidor. | Es uno de sus usos principales. |
-| ¿Pueden coexistir? | Sí. | Sí. |
-
-Por ejemplo, podrías utilizar Next.js para la aplicación web y NestJS para una API independiente. No siempre necesitas separar ambas piezas, pero es una arquitectura posible.
-
-### Angular vs. React
-
-Ambos permiten construir interfaces de usuario, pero no son exactamente el mismo tipo de herramienta.
-
-- React es una biblioteca centrada en interfaces.
-- Angular es un framework más integrado que proporciona convenciones y herramientas para organizar aplicaciones.
-
-En términos generales, Angular establece más decisiones desde el inicio, mientras que React permite elegir más piezas por separado. Esto no significa que React carezca de estructura ni que Angular sea siempre mejor para aplicaciones grandes.
-
-### Svelte vs. React
-
-Ambos permiten crear interfaces mediante componentes, pero funcionan de manera diferente.
-
-React se basa en su modelo de componentes y utiliza mecanismos propios para actualizar la interfaz. Svelte transforma los componentes durante la compilación y utiliza su propio modelo de reactividad.
-
-Para un principiante, lo importante es entender que ambos resuelven problemas similares mediante enfoques distintos.
-
-### Astro vs. Next.js
-
-Los dos pueden generar páginas web y ofrecer capacidades de renderizado en servidor, pero tienen prioridades diferentes.
-
-- Astro está especialmente orientado a sitios cuyo contenido debe mostrarse rápidamente, como documentación, blogs y páginas informativas.
-- Next.js ofrece una plataforma amplia para aplicaciones basadas en React, incluidas aplicaciones muy interactivas.
-
-No es una regla absoluta: Astro puede incorporar componentes interactivos y Next.js también puede generar páginas estáticas.
-
-### Django vs. Next.js
-
-Compararlos directamente puede ser engañoso porque sus enfoques principales son distintos.
-
-- Django es un framework backend de Python que también permite renderizar páginas HTML en el servidor.
-- Next.js es un framework para aplicaciones basadas en React que combina capacidades del lado del cliente y del servidor.
-
-Pueden resolver necesidades que se solapan, pero también pueden formar parte de una misma arquitectura si existe una razón para utilizar ambos.
+| Tecnología | En una frase |
+|---|---|
+| **TypeScript** | JavaScript con "reglas extra" que te avisan de errores antes de que pasen. |
+| **npm** | Una "tienda" para descargar código que otras personas ya hicieron. |
+| **Vite** | Hace que tu proyecto arranque rápido mientras programas. |
+| **PostgreSQL** | Una base de datos (la bodega). |
+| **Docker** | Empaqueta tu app en una "caja" para que funcione igual en cualquier computadora. |
 
 ---
 
-## 4. ¿Cómo se combinan en un proyecto real?
+## 4. Las confusiones más comunes
 
-Imagina que quieres construir una aplicación para administrar una escuela.
+**¿React o Next.js?**
+No es uno *o* el otro. Next.js **usa** React por dentro. Si usas Next.js, ya estás usando React.
 
-Necesitas mostrar alumnos, registrar calificaciones, consultar información y guardar los cambios en una base de datos.
+**¿Vue o Nuxt?**
+Igual que arriba: Nuxt **usa** Vue y le agrega extras.
 
-Una posible arquitectura sería:
+**¿Node.js o NestJS?**
+Node.js es el **lugar** donde corre el código. NestJS es una **forma de organizar** tu backend dentro de ese lugar.
+Analogía: Node.js es la cocina; NestJS es la receta y el orden con el que trabajas en ella.
+
+**¿Next.js o NestJS?**
+Solo se parecen en el nombre
+- **Next.js** → principalmente frontend (con React).
+- **NestJS** → backend.
+
+Incluso pueden usarse juntos en el mismo proyecto.
+
+---
+
+## 5. Un ejemplo real
+
+Imagina una app para administrar una escuela: ver alumnos, registrar calificaciones y guardarlas.
 
 ```mermaid
-flowchart TD
-    U([Usuario]) --> R["React<br/>(Interfaz)"]
-    R --> A["API REST"]
-    A --> N["NestJS + Node.js<br/>(Backend)"]
-    N --> P[("PostgreSQL<br/>(Base de datos)")]
+flowchart LR
+    U([Usuario]) --> R["React<br/>(lo que ves)"]
+    R --> A["API<br/>(el mesero)"]
+    A --> N["NestJS + Node.js<br/>(la cocina)"]
+    N --> P[("PostgreSQL<br/>(la bodega)")]
 ```
 
-En esta arquitectura:
+- **React** muestra las pantallas.
+- **NestJS** (corriendo en **Node.js**) procesa las peticiones.
+- **PostgreSQL** guarda los datos.
 
-- React muestra las pantallas y permite interactuar con ellas.
-- NestJS organiza la lógica del servidor y expone una API.
-- Node.js ejecuta el backend.
-- PostgreSQL almacena la información.
-
-También podrías utilizar Next.js en lugar de React con una configuración independiente, o desarrollar el backend con Django en Python.
-
-Otra posibilidad sería construir una aplicación con Next.js que maneje tanto la interfaz como ciertas funciones del servidor, sin necesitar NestJS.
-
-> [!TIP]
-> **La clave es que las tecnologías se eligen según las necesidades de la aplicación, no por la cantidad de frameworks que puedas incluir.**
+Esta no es la única forma. Podrías usar Django en vez de NestJS, o solo Next.js para todo. **Se elige según lo que necesita el proyecto, no según cuántas tecnologías puedas meter.**
 
 ---
 
-## 5. ¿Qué tecnología debería aprender?
+## 6. ¿Por dónde empiezo?
 
-No existe una respuesta universal. Depende de qué quieras construir y qué conocimientos tengas.
+Sin importar qué quieras hacer, **empieza por aquí**:
 
-| Si tu objetivo es... | Podrías comenzar por... |
+```text
+HTML  →  CSS  →  JavaScript
+(estructura)  (diseño)  (comportamiento)
+```
+
+Después de eso, elige **un** camino:
+
+| Si quieres... | Sigue con... |
 |---|---|
-| Aprender a construir interfaces web. | HTML, CSS, JavaScript y después React, Vue o Angular. |
-| Construir una aplicación basada en React con más herramientas integradas. | React y después Next.js. |
-| Crear APIs y servicios backend con JavaScript. | JavaScript, Node.js y después Express o NestJS. |
-| Construir aplicaciones backend con Python. | Python y después Django. |
-| Crear un sitio centrado en contenido y páginas rápidas. | HTML, CSS y Astro. |
+| Hacer interfaces bonitas e interactivas | React (o Vue) |
+| Hacer el backend con JavaScript | Node.js + Express |
+| Hacer el backend con Python | Python + Django |
+| Hacer un blog o página informativa | Astro |
 
-No necesitas aprender todas las tecnologías de una categoría.
-
-Una ruta razonable consiste en aprender primero los fundamentos, elegir una herramienta para tu objetivo y construir proyectos reales antes de añadir más tecnologías.
+> [!IMPORTANT]
+> Aprende **una** cosa, haz un proyecto pequeño con ella y después sigue. Saltar de tecnología en tecnología es la forma más rápida de sentirte perdido.
 
 ---
 
-## 6. Conceptos clave
+## 7. Para llevar
 
-Antes de terminar, recuerda estas ideas:
+- **No todo es un framework.** Node.js es un runtime, React es una biblioteca, TypeScript es un lenguaje.
+- **Nombres parecidos ≠ misma función.** Next.js y NestJS no son lo mismo.
+- **Muchas se usan juntas, no compiten.** React y PostgreSQL hacen cosas totalmente distintas.
+- **No necesitas aprenderlas todas.** Nadie las sabe todas.
 
-- **No todo es un framework.** Node.js es un runtime, React es una biblioteca y TypeScript es un lenguaje.
-- **Los nombres parecidos no significan funciones iguales.** Next.js y NestJS no son equivalentes.
-- **Una tecnología puede depender de otra.** Next.js utiliza React; NestJS normalmente se ejecuta sobre Node.js.
-- **No todas las tecnologías compiten.** React y PostgreSQL cumplen funciones completamente diferentes.
-- **Puedes combinar tecnologías.** Un proyecto puede tener una interfaz, una API, una base de datos y herramientas de infraestructura distintas.
-- **Más tecnologías no significa una mejor aplicación.** La elección depende del problema, los requisitos y la experiencia del equipo.
+---
 
-## 7. Contribuciones
+## Contribuciones
 
-Esta guía está pensada para estudiantes y personas que están comenzando en el desarrollo web.
+¿Encontraste un error o algo que podría explicarse más fácil? Abre un [*Issue*](../../issues) o envía un [*Pull Request*](../../pulls). La idea es que esta guía siga siendo simple, no una lista interminable de nombres.
 
-Si encuentras un error, consideras que una explicación puede ser más clara o quieres proponer una tecnología que debería incluirse, las contribuciones son bienvenidas.
-
-Puedes abrir un [*Issue*](../../issues) para proponer cambios o enviar un [*Pull Request*](../../pulls) con una mejora.
-
-> **La meta no es enumerar todas las tecnologías existentes, sino ayudar a entender el ecosistema web sin convertirlo en una lista interminable de nombres.**
-
-## 8. Licencia
+## Licencia
 
 Este proyecto está bajo la [Licencia MIT](LICENSE).
 
@@ -328,8 +212,8 @@ Este proyecto está bajo la [Licencia MIT](LICENSE).
 
 <div align="center">
 
-*Guía educativa comunitaria. Las tecnologías evolucionan, por lo que las explicaciones pueden actualizarse con el tiempo.*
+*Guía educativa comunitaria. Las tecnologías cambian, así que esta guía puede actualizarse con el tiempo.*
 
-⭐ Si esta guía te ayudó, ¡considera darle una estrella!
+⭐ Si te ayudó, ¡considera darle una estrella!
 
 </div>
